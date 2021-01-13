@@ -12,9 +12,10 @@ if (userHasScrolled === true) {
 }
 
 draw_button.addEventListener("click", function () {
-    window.location.href = "draw.html";
+    window.location.href = "/draw";
 });
 
 condition = graph_image.addEventListener("mouseover", function () {
     invisible_text.classList.remove("invisible-text");
+    console.log("Niiiiiice");
 });
