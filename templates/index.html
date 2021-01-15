@@ -1,19 +1,12 @@
 {% extends 'base.html' %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-</head>
-<body>
-  {% block body %}
-    <div class="title">
-      <h1 id="title">Welcome to Grapher</h1>
-    </div>
-    <div class="content">
-      <h2>Grapher is an awesome tool for drawing and visualising graphs.</h2>
-      <button id="draw-btn" class="btn">Start Drawing Now!</button>
-      <img src="{{ url_for('static', filename='images/graph.png') }}" alt="Image of a cosine wave" class="graph-image">
-      <p class="invisible-text">Cosine wave with wavelength of pi.</p>
-    </div>
-  {% endblock %}
-</body>
-</html>
+{% block body %}
+  <div class="title">
+    <h1 id="title">Welcome to Grapher</h1>
+  </div>
+  <div class="content">
+    <h2>Grapher is an awesome tool for drawing and visualising graphs.</h2>
+    <button id="draw-btn" class="btn">Start Drawing Now!</button>
+    <img src="{{ url_for('static', filename='images/graph.png') }}" alt="Image of a cosine wave" class="graph-image">
+    <p class="invisible-text">Cosine wave with wavelength of pi.</p>
+  </div>
+{% endblock %}

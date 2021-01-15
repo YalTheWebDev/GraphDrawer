@@ -1,14 +1,12 @@
 {% extends 'base.html' %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Draw</title>
-</head>
-<body>
-    {% block body %}
-    {% endblock %}
-</body>
-</html>
+{% block body %}
+    <div class="title">
+        <h1 id="title">Start Drawing Now!</h1>
+        <form action="/draw" method="POST">
+            <h2>Enter Equation Below:</h2>
+            <input type="text" name="GraphXValues" id="GraphXValues">
+            <input type="text" name="GraphYValues" id="GraphYValues">
+            <input type="submit" value="Draw" class="btn draw-btn">
+        </form>
+    </div>
+{% endblock %}
