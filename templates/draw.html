@@ -4,9 +4,20 @@
         <h1 id="title">Start Drawing Now!</h1>
         <form action="/draw" method="POST">
             <h2>Enter Equation Below:</h2>
+            <label for="GraphXValues">X Values:</label>
             <input type="text" name="GraphXValues" id="GraphXValues">
+            <label for="GraphYValues">Equation: y =</label>
             <input type="text" name="GraphYValues" id="GraphYValues">
             <input type="submit" value="Draw" class="btn draw-btn">
         </form>
+        <h3>Available Graph Types:</h3>
+        <ul>
+            <li><a href="#">Linear Graphs</a></li>
+            <li><a href="#">Quadratic Graphs</a></li>
+            <li><a href="#">Cubic Graphs</a></li>
+            <li><a href="#">Sine Graphs</a></li>
+            <li><a href="#">Cosine Graphs</a></li>
+            <li><a href="#">Tangent Graphs</a></li>
+        </ul>
     </div>
 {% endblock %}
