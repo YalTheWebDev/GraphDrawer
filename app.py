@@ -45,7 +45,8 @@ def draw_page():
                 ys = [x**2+(2*x)+24 for x in xs]
                 print(ys)
                 axis.plot(xs, ys)
-            elif request.form['GraphYValues'] == 'x^3+2x^2+3x+25':
+            elif 'x^3' in request.form['GraphYValues']:
+                print(request.form['GraphYValues'].split('^3'))
                 xs = range(-int(request.form['GraphXValues']), int(request.form['GraphXValues']))
                 ys = [x**3 + (2 * x**2) + (3 * x) + 25 for x in xs]
                 axis.plot(xs, ys)
