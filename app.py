@@ -31,6 +31,7 @@ def draw_page():
     def create_figure():
         fig = Figure()
         axis = fig.add_subplot(1, 1, 1)
+        # Handling different graph types (incomplete)
         if ',' not in request.form['GraphXValues']:
             xs = range(int(request.form['GraphXValues']))
             if request.form['GraphYValues'] == 'sin(x)':
