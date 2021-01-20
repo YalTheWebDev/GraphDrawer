@@ -46,9 +46,13 @@ def draw_page():
                 print(ys)
                 axis.plot(xs, ys)
             elif 'x^3' in request.form['GraphYValues']:
-                print(request.form['GraphYValues'].split('^3'))
+                values = request.form['GraphYValues'].split('+')
+                values = [value.split('x') for value in values]
+                print(values)
+                values = [values[0][0], int(values[1][0]), int(values[2][0]), int(values[3][0])]
+                print(values)
                 xs = range(-int(request.form['GraphXValues']), int(request.form['GraphXValues']))
-                ys = [x**3 + (2 * x**2) + (3 * x) + 25 for x in xs]
+                ys = [x**3 + (values[1] * x**2) + (values[2] * x) + values[3] for x in xs]
                 axis.plot(xs, ys)
             elif request.form['GraphYValues'] == 'cos(x)':
                 xs = range(-int(request.form['GraphXValues']), int(request.form['GraphXValues']))
@@ -58,13 +62,22 @@ def draw_page():
                 xs = range(-int(request.form['GraphXValues']), int(request.form['GraphXValues']))
                 ys = [np.tan(x) for x in xs]
                 axis.plot(xs, ys)
+            elif request.form['GraphYValues'] == '1/x':
+                xs = range(-int(request.form['GraphXValues']), int(request.form['GraphXValues']))
+                xs = list(xs)
+                xs.remove(0)
+                ys = [1/x for x in xs]
+                axis.plot(xs, ys)
         return fig
     
     if request.method == 'POST':
-        fig = create_figure()
-        output = io.BytesIO()
-        FigureCanvas(fig).print_png(output)
-        return Response(output.getvalue(), mimetype='image/png')
+        try:
+            fig = create_figure()
+            output = io.BytesIO()
+            FigureCanvas(fig).print_png(output)
+            return Response(output.getvalue(), mimetype='image/png')
+        except:
+            return render_template('graph_error.html')
     else:
         return render_template('draw.html')
 
