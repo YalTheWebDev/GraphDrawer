@@ -37,9 +37,14 @@ def draw_page():
             if request.form['GraphYValues'] == 'sin(x)':
                 ys = [np.sin(x) for x in xs]
                 axis.plot(xs, ys)
-            elif request.form['GraphYValues'] == '2x':
-                ys = [x * 2 for x in xs]
-                axis.plot(xs, ys)
+            elif 'x' in request.form['GraphYValues'] and '^2' not in request.form['GraphYValues'] and '^3' not in request.form['GraphYValues']:
+                if '+' in request.form['GraphYValues']:
+                    values = request.form['GraphYValues'].split('+')
+                    values = [value.split('x') for value in values]
+                    values = [values[0][0], values[1][0]]
+                    print(values)
+                    ys = [x * values[0] + values[1][0] for x in xs]
+                    axis.plot(xs, ys)
             elif request.form['GraphYValues'] == 'x^2+2x+24':
                 xs = range(-int(request.form['GraphXValues']), int(request.form['GraphXValues']))
                 ys = [x**2+(2*x)+24 for x in xs]
@@ -68,6 +73,7 @@ def draw_page():
                 xs.remove(0)
                 ys = [1/x for x in xs]
                 axis.plot(xs, ys)
+                print(xs, ys)
         return fig
     
     if request.method == 'POST':
