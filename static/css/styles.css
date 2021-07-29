@@ -41,3 +41,7 @@ h2 {
 .text-block {
     display: block;
 }
+
+#percentage {
+    display: inline-block;
+}
